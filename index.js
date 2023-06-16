@@ -7,7 +7,8 @@ console.log(process.env.MONGO_URL);
 
 const app = express(); // calling express (now app contain rest api methods post,get,put,delete)
 
-const PORT = 4000; // You can also change port no. like 555, 111... except 3000 because react app is run on port 3000.
+// const PORT = 4000; // You can also change port no. like 555, 111... except 3000 because react app is run on port 3000.
+const PORT = process.env.PORT; // Auto assign PORT // In railway we cann't declare particular port no. 
 
 // Step:9 (Sending data from postman to node)
 // XML JSON Text
