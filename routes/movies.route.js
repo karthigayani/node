@@ -113,7 +113,7 @@ import { GetMovies, GetMovieById, CreateMovies, DeleteMovieById, UpdateMovieById
 //   });
 
 // Task 1 -> Getting all data from database(mongoDB) with "filter using request.query"
-app.get("/movies", async function (request, response) { 
+router.get("/", async function (request, response) { 
     if(request.query.rating){
       request.query.rating = +request.query.rating; // Converting datatype string to number // because request.query returns string
     }
@@ -148,7 +148,7 @@ app.get("/movies", async function (request, response) {
   
   // Task 2 -> Getting data from database(mongoDB)
   // app.get("/movies/:id", function (request, response) { 
-    app.get("/movies/:id", async function (request, response) { // Step:5 we are using await, await works in async function and top-level module only. So we put async here.
+    router.get("/:id", async function (request, response) { // Step:5 we are using await, await works in async function and top-level module only. So we put async here.
     const {id} = request.params;
     console.log(request.params, id);
     
@@ -173,7 +173,7 @@ app.get("/movies", async function (request, response) {
   // }); 
   
   // app.post("/movies", express.json(), async function (request, response) { // Step:8
-  app.post("/movies", async function (request, response) {
+  router.post("/", async function (request, response) {
   // app.post("/movies", async function (request, response) { // step:1 get -> post // Step:6 we are using await, await works in async function and top-level module only. So we put async here.
     const data = request.body; // step:2 storing postman request in variable data
     console.log(data); // step:3 viewing the data
@@ -185,7 +185,7 @@ app.get("/movies", async function (request, response) {
   
   // Task 3 -> Getting data from database(mongoDB) // Delete movie by id
   
-    app.delete("/movies/:id", async function (request, response) {
+  router.delete("/:id", async function (request, response) {
       const {id} = request.params;  
    // db.movies.deleteOne({id: '100' }) //mongo command
       const result = await DeleteMovieById(id); 
@@ -199,7 +199,7 @@ app.get("/movies", async function (request, response) {
   
   // Task 4 -> Getting data from database(mongoDB) // Update movie by id
   
-    app.put("/movies/:id", async function (request, response) { 
+  router.put("/:id", async function (request, response) { 
       const {id} = request.params;
       const data = request.body; 
       // db.movies.updateOne({ id: '99'}, { $set: {rating: 9 } }) //mongo command
