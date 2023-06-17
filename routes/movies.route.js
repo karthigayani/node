@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import client from "../index.js"
+import { GetMovies, GetMovieById, CreateMovies, DeleteMovieById, UpdateMovieById } from "../services/movies.service.js";
 
 // // Task 1 
 // // http://localhost:4000/movies - movies (data)
@@ -119,7 +119,7 @@ app.get("/movies", async function (request, response) {
     }
     console.log(request.query);
      // db.movies.find({}) // mongodb command
-    const movies = await client.db("b40wd").collection("movies").find(request.query).toArray();
+    const movies = await GetMovies(request);
     console.log(movies);
     response.send(movies);
   });
@@ -156,7 +156,7 @@ app.get("/movies", async function (request, response) {
     // db.movies.findOne({id: '100'}); // Step:2 mongodb command 
     // const movie = client.db("b40wd").collection("movies").findOne({ id: "100" }); // Step:3 linking node with mongodb
     // const movie = await client.db("b40wd").collection("movies").findOne({ id: "100" }); // Step:4 It will takes some time to get the data so we put await here
-    const movie = await client.db("b40wd").collection("movies").findOne({ id: id }); // Step:6 for getting movie based on id
+    const movie = await GetMovieById(id); // Step:6 for getting movie based on id
     console.log(movie);
    
     movie
@@ -179,7 +179,7 @@ app.get("/movies", async function (request, response) {
     console.log(data); // step:3 viewing the data
     // db.movies.insertMany(data); // Step:4 mongodb command
   
-    const result = await client.db("b40wd").collection("movies").insertMany(data); // Step:5 converting mongo command to node command
+    const result = await CreateMovies(data); // Step:5 converting mongo command to node command
     response.send(result); // step:7 movies -> result
   });
   
@@ -188,7 +188,7 @@ app.get("/movies", async function (request, response) {
     app.delete("/movies/:id", async function (request, response) {
       const {id} = request.params;  
    // db.movies.deleteOne({id: '100' }) //mongo command
-      const result = await client.db("b40wd").collection("movies").deleteOne({ id: id }); 
+      const result = await DeleteMovieById(id); 
       console.log(result);
      
       result.deletedCount > 0
@@ -204,11 +204,11 @@ app.get("/movies", async function (request, response) {
       const data = request.body; 
       // db.movies.updateOne({ id: '99'}, { $set: {rating: 9 } }) //mongo command
       // const result = await client.db("b40wd").collection("movies").updateOne({ id: '99'}, { $set: {rating: 9 } }); 
-      const result = await client.db("b40wd").collection("movies").updateOne({ id: id}, { $set: data }); 
+      const result = await UpdateMovieById(id, data); 
       console.log(result);
      
       response.send(result);
     });
 
 export default router;
-  
+
