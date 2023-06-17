@@ -19,7 +19,7 @@ const PORT = process.env.PORT; // Auto assign PORT // In railway we cann't decla
 app.use(express.json()); // Step:8
 
 app.get("/", function (request, response) { // "/" -> path
-  response.send("Hello🙋‍♂️ World🌏 !!!🎊✨");
+  response.send("Hello🙋‍♂️ World🌏🎉🎊✨");
 });
 
 // Connection
