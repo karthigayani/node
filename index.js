@@ -5,6 +5,8 @@ import * as dotenv from "dotenv";
 dotenv.config();
 console.log(process.env.MONGO_URL);
 import moviesRouter from "./routes/movies.route.js";
+import userRouter from "./routes/user.route.js";
+import bcrypt from "bcrypt";
 
 const app = express(); // calling express (now app contain rest api methods post,get,put,delete)
 
@@ -33,7 +35,26 @@ app.get("/", function (request, response) { // "/" -> path
 
 
 app.use("/movies",moviesRouter);
+app.use("/user",userRouter); // Step:2- Salttech user
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`)); 
+
+// Step:1- Salttech user
+// Applying Salt technique
+// function generateHashedPassword(password) {
+//   const No_OF_ROUNDS = 10;
+//   const salt = bcrypt.genSalt(No_OF_ROUNDS);
+//   const hashedPassword = bcrypt.hash(password, salt);
+//   console.log(salt);
+// }
+
+async function generateHashedPassword(password) { // await works on async function and top level module only. So we convert function to async function.
+  const No_OF_ROUNDS = 10;
+  const salt = await bcrypt.genSalt(No_OF_ROUNDS); // Salt generation take some time. So we used await.
+  const hashedPassword = await bcrypt.hash(password, salt); // hashedPassword depends on salt value. So we used await.
+  console.log(salt);
+  console.log(hashedPassword);
+}
+generateHashedPassword("password@123"); // function Call.
 
 export {client};
 
