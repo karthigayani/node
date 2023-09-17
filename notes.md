@@ -1,3 +1,7 @@
+### Day-09
+
+open a folder -> create a file eg: sum.js -> open a terminal -> type node<space>filename with extension. `eg: node sum.js`
+
 ### Day-10 Revision
 
 - Advantages of postman

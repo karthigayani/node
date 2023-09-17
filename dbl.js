@@ -1,3 +1,5 @@
+// ### Day-09
+
 // const double = (n) => n*2;
 // console.log(double(10));
 
@@ -17,9 +19,15 @@
 // // node dbl.js 50 -> 100
 // // node dbl.js 20 -> 40
 
-// method : 2
-const [, , num] = process.argv; // array destructuring
-const double = (n) => n * 2;
-console.log(double(num));
-// node dbl.js 5 -> 10
-// node dbl.js 10 -> 20
+// // method : 2
+// const [, , num] = process.argv; // array destructuring
+// const double = (n) => n * 2;
+// console.log(double(num));
+// // node dbl.js 5 -> 10
+// // node dbl.js 10 -> 20
+
+// Task
+const [, , num1,num2] = process.argv; // array destructuring
+const sum = (a,b) => a + b;
+console.log(sum(+num1,+num2));
+// node dbl.js 5 4

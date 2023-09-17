@@ -1,3 +1,6 @@
+// ### Day-09
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const os = require("os");
 
 console.log("Free memory", os.freemem());

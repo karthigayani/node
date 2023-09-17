@@ -1,5 +1,7 @@
 // // Day - 09
 // // fs -> file system (write, read)
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
 // const fs = require("fs");
 
@@ -19,31 +21,37 @@
 // // text-10.html
 
 // const quote2 = "Live more, worry less 😍🤩";
-// for(i=1; i<=10; i++){
+// for(let i=1; i<=10; i++){
 //     fs.writeFile(`./backup/text-${i}.html`, quote2, (err) => {
 //         console.log("Completed Writing...");
 //     });
 // };
 
+
 // // Task 2
 // // node file.js 30 -> 30 files to be created | text-1.html ... text-30.html
-// const [, , n] = process.argv;
+
+// // const [, , n] = process.argv;
 // const quote3 = "Everyone has a different clock, wait for your time⌚";
-// for(i=1; i<=n; i++){
+// for(let i=1; i<=6; i++){
 //     fs.writeFile(`./backup2/text-${i}.html`, quote3, (err) => {
-       
+//         if (err) {
+//             console.error("Error writing file:", err);
+//           } else {
+//             console.log("Completed Writing...");
+//           } 
 //     });
 // };
 
 // Day-10
 
-// // read method
+// read method
 // const fs = require("fs");
 
-// // // for eg if "utf-8" not given // you will get hexa decimal values.
-// // fs.readFile("./cool.txt", (err,data) => {
-// //     console.log(data); 
-// // });
+// // for eg if "utf-8" not given // you will get hexa decimal values.
+// fs.readFile("./cool.txt", (err,data) => {
+//     console.log(data); 
+// });
 
 // fs.readFile("./cool.txt", "utf-8", (err,data) => {
 //     console.log(data);
@@ -70,10 +78,10 @@
 
 // const quote3 = "Dream without fear, love without limits😍❣";
 
-// // // What will happen when you use write here ? -> It will overwrites the entier data in the existing file.
-// // fs.writeFile("./fun.html", quote3, (err) => {
-// //     console.log("Completed appending!!!")
-// // });
+// // What will happen when you use write here ? -> It will overwrites the entier data in the existing file.
+// fs.writeFile("./fun.html", quote3, (err) => {
+//     console.log("Completed appending!!!")
+// });
 
 // // So we go for append method
 // // fs.appendFile("./fun.html", quote3, (err) => {

@@ -1,3 +1,5 @@
+// ### Day-09
+
 // const double = (n) => n*2;
 // console.log(double(10));
 
@@ -12,18 +14,18 @@
 // global is came instead of window
 // console.log(global); // - ✔
 
-console.log(process.argv);
+// console.log(process.argv);
 
 // // Method : 1
 // const addition = (n,m) => n + m;
 // console.log(addition(process.argv[2,3]));
 
 // Method : 2
-const [, ,n1 ,m1] = process.argv;
-const addition = (n, m) => n + m;
-// console.log(addition(n1,m1));  // Output : 23
-// console.log(addition(+n1, +m1)); // Output : 5
-console.log(addition(parseInt (n1), parseInt (m1))); // Output : 5
+// const [, ,n1 ,m1] = process.argv;
+// const addition = (n, m) => n + m;
+// // console.log(addition(n1,m1));  // Output : 23
+// // console.log(addition(+n1, +m1)); // Output : 5
+// console.log(addition(parseInt (n1), parseInt (m1))); // Output : 5
 
 
 
